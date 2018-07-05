@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel="stylesheet" href = "style.css" type="text/css">
+    </head>
+    <body>
+        <h1 onclick="changeText(this)">Click on this text!</h1>
+
+        <script>
+        function changeText(id) {
+            id.innerHTML = "HA! gotcha";
+        }
+        </script>
+
+        <style>
+        #container {
+          width: 400px;
+          height: 400px;
+          position: relative;
+          background: lightblue;
+        }
+        #animate {
+          width: 50px;
+          height: 50px;
+          position: absolute;
+          background-color: red;
+        }
+        #button  {
+          background-color: lightcoral;
+          animation-name: example;
+          animation-duration: 4s;
+          position: relative;
+            }   
+        /* Standard syntax */
+        @keyframes example {
+            0%   {background-color:red; left:0px; top:0px;}
+            25%  {background-color:limegreen; left:300px; top:0px;}
+            50%  {background-color:royalblue; left:300px; top:500px;}
+            75%  {background-color:orange; left:-300px; top:500px;}
+            100% {background-color:purple; left:-300px; top:0px;}
+        }
+        
+        </style>
+        <body>
+
+        <p>
+        <button id="button" onclick="myMove()">Click Me</button>
+        </p> 
+
+        <div id ="container">
+        <div id ="animate"></div>
+        </div>
+
+        <script>
+        function myMove() {
+          var elem = document.getElementById("animate");   
+          var pos = 0;
+          var id = setInterval(frame, 5);
+          function frame() {
+            if (pos == 350) {
+              clearInterval(id);
+            }
+            if (pos <= 175) {
+                pos++; 
+              elem.style.top = pos + 'px'; 
+              elem.style.left = pos + 'px'; 
+            }
+            else {
+              pos++; 
+              elem.style.top = (350-pos) + 'px'; 
+              elem.style.left = pos + 'px'
+            }
+          }
+        }
+        </script>
+    </body>
+</html>
